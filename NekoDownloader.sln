@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NekoDownloader.Web", "NekoDownloader.Web\NekoDownloader.Web.csproj", "{75EE9D2E-88BC-4516-98CA-1EF6E3B6FD97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NekoDownloader.Console", "NekoDownloader.Console\NekoDownloader.Console.csproj", "{1521FFC0-B87F-4349-A4A7-CAD2796207FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NekoDownloader.Core", "NekoDownloader.Core\NekoDownloader.Core.csproj", "{3B2730D3-DEDF-4E5B-ACDF-C33D8939497B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NekoDownloader.Services", "NekoDownloader.Services\NekoDownloader.Services.csproj", "{5D815879-BE46-4A1A-91B4-01C3E2F2AEF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NekoDownloader.Infrastructure", "NekoDownloader.Infrastructure\NekoDownloader.Infrastructure.csproj", "{25E8B88E-3162-4FE3-91D6-3361BD53D6FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75EE9D2E-88BC-4516-98CA-1EF6E3B6FD97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75EE9D2E-88BC-4516-98CA-1EF6E3B6FD97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75EE9D2E-88BC-4516-98CA-1EF6E3B6FD97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75EE9D2E-88BC-4516-98CA-1EF6E3B6FD97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1521FFC0-B87F-4349-A4A7-CAD2796207FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1521FFC0-B87F-4349-A4A7-CAD2796207FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1521FFC0-B87F-4349-A4A7-CAD2796207FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1521FFC0-B87F-4349-A4A7-CAD2796207FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B2730D3-DEDF-4E5B-ACDF-C33D8939497B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B2730D3-DEDF-4E5B-ACDF-C33D8939497B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B2730D3-DEDF-4E5B-ACDF-C33D8939497B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B2730D3-DEDF-4E5B-ACDF-C33D8939497B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D815879-BE46-4A1A-91B4-01C3E2F2AEF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D815879-BE46-4A1A-91B4-01C3E2F2AEF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D815879-BE46-4A1A-91B4-01C3E2F2AEF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D815879-BE46-4A1A-91B4-01C3E2F2AEF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25E8B88E-3162-4FE3-91D6-3361BD53D6FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25E8B88E-3162-4FE3-91D6-3361BD53D6FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25E8B88E-3162-4FE3-91D6-3361BD53D6FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25E8B88E-3162-4FE3-91D6-3361BD53D6FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
