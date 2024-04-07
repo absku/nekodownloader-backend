@@ -12,28 +12,37 @@ public class SyncPageSchedule(IUnitOfWork unitOfWork, IOptions<AppSettings> appS
         // Get all pages
         var pages = (await unitOfWork.PageRepository.GetAsync(p => !p.Available)).ToList();
         var savePath = appSettings.Value.DownloadPath;
-        
+
         // Sync each page
-        int i = 0;
+        var i = 0;
         foreach (var page in pages.OrderBy(p => p.ChapterUuid))
         {
             Console.WriteLine($"Syncing page {i++}/{pages.Count}");
             var chapter = await unitOfWork.ChapterRepository.GetByUuidAsync(page.ChapterUuid);
             var comic = await unitOfWork.ComicRepository.GetByUuidAsync(chapter.ComicUuid);
             // Sync page
-            var updatePage = await unitOfWork.GetSource(comic.Source).GetPage(page.Link);
-            page.Image = Path.Combine(comic.Title, chapter.Number.ToString(CultureInfo.InvariantCulture), page.Number + ".jpg");
-            var pagePath = Path.Combine(savePath, page.Image);
-            CreateDirectoryIfNotExists(pagePath);
-            await File.WriteAllBytesAsync(pagePath, updatePage);
-            page.Available = true;
-            await unitOfWork.PageRepository.Update(page);
-            await unitOfWork.CommitAsync();
+            try
+            {
+                var updatePage = await unitOfWork.GetSource(comic.Source).GetPage(page.Link);
+                page.Image = Path.Combine(comic.Title, chapter.Number.ToString(CultureInfo.InvariantCulture),
+                    page.Number + ".jpg");
+                var pagePath = Path.Combine(savePath, page.Image);
+                CreateDirectoryIfNotExists(pagePath);
+                await File.WriteAllBytesAsync(pagePath, updatePage);
+                page.Available = true;
+                await unitOfWork.PageRepository.Update(page);
+                await unitOfWork.CommitAsync();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
             i++;
         }
     }
-    
-    private void CreateDirectoryIfNotExists(string path)
+
+    private static void CreateDirectoryIfNotExists(string path)
     {
         var directory = Path.GetDirectoryName(path)!;
         if (!Directory.Exists(directory))

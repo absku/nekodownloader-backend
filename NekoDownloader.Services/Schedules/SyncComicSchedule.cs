@@ -10,16 +10,24 @@ public class SyncComicSchedule(IUnitOfWork unitOfWork)
         var comics = (await unitOfWork.ComicRepository.GetAsync(c => !c.Available)).ToList();
         
         // Sync each comic
-        int i = 0;
+        var i = 0;
         foreach (var comic in comics)
         {
             Console.WriteLine($"Syncing comic {i++}/{comics.Count}");
             // Sync comic
-            var updateComic = await unitOfWork.GetSource(comic.Source).GetComic(comic.Link);
-            comic.Chapters = updateComic.Chapters;
-            comic.Available = true;
-            await unitOfWork.ComicRepository.Update(comic);
-            await unitOfWork.CommitAsync();
+            try
+            {
+                var updateComic = await unitOfWork.GetSource(comic.Source).GetComic(comic.Link);
+                comic.Chapters = updateComic.Chapters;
+                comic.Available = true;
+                await unitOfWork.ComicRepository.Update(comic);
+                await unitOfWork.CommitAsync();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
             i++;
         }
     }
