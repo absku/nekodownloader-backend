@@ -12,7 +12,7 @@ using NekoDownloader.Infrastructure.Data;
 namespace NekoDownloader.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240402235506_v1.0")]
+    [Migration("20240407003813_v1.0")]
     partial class v10
     {
         /// <inheritdoc />
@@ -121,11 +121,6 @@ namespace NekoDownloader.Infrastructure.Migrations
 
                     b.Property<int>("Number")
                         .HasColumnType("int");
-
-                    b.Property<string>("SourceLink")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
 
                     b.HasKey("Uuid");
 

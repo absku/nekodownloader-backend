@@ -57,7 +57,6 @@ namespace NekoDownloader.Infrastructure.Migrations
                 columns: table => new
                 {
                     Uuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SourceLink = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Link = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Available = table.Column<bool>(type: "bit", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(2048)", maxLength: 2048, nullable: true),

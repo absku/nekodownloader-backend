@@ -119,11 +119,6 @@ namespace NekoDownloader.Infrastructure.Migrations
                     b.Property<int>("Number")
                         .HasColumnType("int");
 
-                    b.Property<string>("SourceLink")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
                     b.HasKey("Uuid");
 
                     b.HasIndex("ChapterUuid");
