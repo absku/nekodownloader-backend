@@ -1,5 +1,4 @@
-﻿using NekoDownloader.Core.Entities;
-using NekoDownloader.Core.Interfaces;
+﻿using NekoDownloader.Core.Interfaces;
 
 namespace NekoDownloader.Services.Schedules;
 

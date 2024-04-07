@@ -73,10 +73,10 @@ public class IkigaiMangasSource : IBaseSource
         var matches = _patternPage.Matches(body);
         var links = matches.Select(match => match.Value).Distinct().ToList();
         
-        return links.Select((link, index) => new Page
+        return links.Select((sourceLink, index) => new Page
         {
             Number = index,
-            SourceLink = link
+            Link = sourceLink
         });
     }
 

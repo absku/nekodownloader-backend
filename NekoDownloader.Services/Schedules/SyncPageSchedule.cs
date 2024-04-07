@@ -21,12 +21,11 @@ public class SyncPageSchedule(IUnitOfWork unitOfWork, IOptions<AppSettings> appS
             var chapter = await unitOfWork.ChapterRepository.GetByUuidAsync(page.ChapterUuid);
             var comic = await unitOfWork.ComicRepository.GetByUuidAsync(chapter.ComicUuid);
             // Sync page
-            var updatePage = await unitOfWork.GetSource(comic.Source).GetPage(page.SourceLink);
-            var pagePath = Path.Combine(savePath, comic.Title, chapter.Number.ToString(CultureInfo.InvariantCulture), page.Number + ".jpg");
+            var updatePage = await unitOfWork.GetSource(comic.Source).GetPage(page.Link);
+            page.Image = Path.Combine(comic.Title, chapter.Number.ToString(CultureInfo.InvariantCulture), page.Number + ".jpg");
+            var pagePath = Path.Combine(savePath, page.Image);
             CreateDirectoryIfNotExists(pagePath);
             await File.WriteAllBytesAsync(pagePath, updatePage);
-            page.Image = pagePath;
-            page.Link = $"{appSettings.Value.Url}/page/{page.Uuid}";
             page.Available = true;
             await unitOfWork.PageRepository.Update(page);
             await unitOfWork.CommitAsync();

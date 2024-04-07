@@ -16,10 +16,6 @@ public class PageConfiguration : IEntityTypeConfiguration<Page>
         builder.Property(x => x.Number)
             .IsRequired();
         
-        builder.Property(x => x.SourceLink)
-            .IsRequired()
-            .HasMaxLength(255);
-        
         builder.Property(x => x.Link)
             .IsRequired()
             .HasMaxLength(255);

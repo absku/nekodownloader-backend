@@ -50,7 +50,7 @@ public class LectorknsSource : IBaseSource
         
         return pages.Select(x => new Page
         {
-            SourceLink = x.GetAttribute("src")!.Trim().Replace("\t", ""),
+            Link = x.GetAttribute("src")!.Trim().Replace("\t", ""),
             Number = int.Parse(x.GetAttribute("id")!.Split("-")[1], CultureInfo.InvariantCulture)
         });
     }

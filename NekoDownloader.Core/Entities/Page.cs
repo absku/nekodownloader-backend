@@ -3,8 +3,7 @@
 public class Page
 {
     public Guid Uuid { get; set; } = Guid.NewGuid();
-    public string SourceLink { get; set; } = null!;
-    public string Link { get; set; } = "#";
+    public string Link { get; set; } = null!;
     public bool Available { get; set; } = false;
     public string Image { get; set; } = null!;
     public int Number { get; set; }

@@ -1,12 +1,14 @@
 ﻿using System.Globalization;
 using System.IO.Compression;
+using Microsoft.Extensions.Options;
+using NekoDownloader.Core.Configs;
 using NekoDownloader.Core.Entities;
 using NekoDownloader.Core.Interfaces;
 using NekoDownloader.Core.Interfaces.Services;
 
 namespace NekoDownloader.Services;
 
-public class ComicService(IUnitOfWork unitOfWork) : IComicService
+public class ComicService(IUnitOfWork unitOfWork, IOptions<AppSettings> appSettings) : IComicService
 {
     public async Task<Comic> GetByUuid(Guid uuid)
     {
@@ -25,7 +27,13 @@ public class ComicService(IUnitOfWork unitOfWork) : IComicService
 
     public async Task<Chapter> GetChapter(Guid comicId, Guid chapterId)
     {
-        return await unitOfWork.ChapterRepository.GetByUuidFullAsync(chapterId);
+        var chapter = await unitOfWork.ChapterRepository.GetByUuidFullAsync(chapterId);
+        if (chapter.Pages.Count <= 0) return chapter;
+        foreach (var chapterPage in chapter.Pages)
+        {
+            chapterPage.Link = $"{appSettings.Value.Url}/{appSettings.Value.PageEndpoint}/{chapterPage.Uuid}";
+        }
+        return chapter;
     }
 
     public async Task SyncComic(Guid comicId)

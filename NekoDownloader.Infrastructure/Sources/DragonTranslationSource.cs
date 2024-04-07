@@ -50,7 +50,7 @@ public class DragonTranslationSource : IBaseSource
         
         return pages.Select((x, index) => new Page
         {
-            SourceLink = x.GetAttribute("src")!.Trim().Replace("\t", ""),
+            Link = x.GetAttribute("src")!.Trim().Replace("\t", ""),
             Number = index
         });
     }
