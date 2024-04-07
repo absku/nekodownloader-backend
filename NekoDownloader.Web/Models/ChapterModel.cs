@@ -8,7 +8,6 @@ public class ChapterModel
     public float Number { get; set; }
     public string Title { get; set; } = null!;
     public bool Available { get; set; }
-    public string Link { get; set; } = null!;
 }
 
 public class ChapterWithPagesModel : ChapterModel

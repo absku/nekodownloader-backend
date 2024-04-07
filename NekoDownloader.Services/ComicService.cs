@@ -31,7 +31,7 @@ public class ComicService(IUnitOfWork unitOfWork, IOptions<AppSettings> appSetti
         if (chapter.Pages.Count <= 0) return chapter;
         foreach (var chapterPage in chapter.Pages)
         {
-            chapterPage.Link = $"{appSettings.Value.Url}/{appSettings.Value.PageEndpoint}/{chapterPage.Uuid}";
+            chapterPage.Link = $"{appSettings.Value.Url}{appSettings.Value.PageEndpoint}/{chapterPage.Uuid}";
         }
         return chapter;
     }
